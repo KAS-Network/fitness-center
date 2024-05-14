@@ -1,0 +1,43 @@
+@use "./variables.scss" as vars;
+
+.auth {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: vars.$bgColor;
+  height: 100vh;
+  
+  &__container {
+    padding: 100px 50px;
+  }
+
+  &__title {
+    margin-bottom: 20px;
+    color: vars.$mainColor;
+    font-weight: 700;
+    font-size: 40px;
+  }
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+
+  &__label {
+    margin-bottom: 15px;
+  }
+
+  &__field-title {
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+
+  &__input {
+    padding: 10px;
+    width: 350px;
+    background-color: #fff;
+    border: 2px solid vars.$mainColor;
+    border-radius: 0;
+    font-size: 18px;
+  }
+}

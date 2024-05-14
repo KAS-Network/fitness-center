@@ -1,0 +1,50 @@
+@use "./variables.scss" as vars;
+
+.hero {
+  background-image: url("/images/hero-bg.jpg"), url("/images/hero-bg-default.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+
+  &__container {
+    position: relative;
+    flex-direction: column;
+    padding: 80px 50px 120px;
+    min-height: 680px;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+    color: vars.$mainColor;
+    font-weight: 900;
+    font-size: 60px;
+  }
+
+  &__description {
+    margin-bottom: 40px;
+    max-width: 460px;
+    font-size: 20px;
+  }
+
+  &__schedule {
+    margin-bottom: 40px;
+  }
+
+  &__edit-link {
+    position: absolute;
+    right: 50px;
+    bottom: 120px;
+  }
+}
+
+.address {
+  font-size: 20px;
+
+  &__title {
+    margin-bottom: 10px;
+  }
+
+  &__info {
+    font-style: normal;
+  }
+}

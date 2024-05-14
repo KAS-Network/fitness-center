@@ -1,0 +1,21 @@
+.schedule {
+  font-size: 20px;
+
+  &__title {
+    margin-bottom: 10px;
+  }
+
+  &__item { 
+    display: flex;
+    margin-bottom: 5px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__weekday {
+    display: flex;
+    width: 40px
+  }
+}

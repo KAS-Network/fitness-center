@@ -1,0 +1,94 @@
+$fieldWidth: 600px;
+
+.editing-form, .creation-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  &__block {
+    margin-bottom: 20px;
+  }
+
+  &__field-title {
+    margin-bottom: 5px;
+    color: #000;
+  }
+
+  &__text-input {
+    padding: 10px;
+    width: $fieldWidth;
+    font-size: 16px;
+  }
+
+  &__date-input {
+    padding: 5px;
+  }
+
+  &__radio-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__radio-value {
+    margin-right: 5px;
+  }
+
+  &__textarea {
+    resize: none;
+    height: 150px;
+  }
+
+  &__weekday-schedule {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__weekday {
+    width: 40px;
+  }
+
+  &__time-input {
+    padding: 5px;
+  }
+
+  &__img-preview {
+    position: relative;
+    display: flex;
+    width: $fieldWidth;
+    min-height: 400px;
+    background-color: #fff;
+  }
+
+  &__img-input {
+    display: none;
+  }
+
+  &__add-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-100px) translateY(-100px);
+    opacity: 0;
+  }
+
+  &__img-preview:hover &__add-icon {
+    opacity: 1;
+  }
+
+  &__select {
+    padding: 10px;
+    font-size: 16px;
+    width: $fieldWidth;
+  }
+}

@@ -1,0 +1,12 @@
+.swiper {
+  padding-bottom: 36px;
+  width: 100%;
+
+  &-pagination {
+    bottom: 0 !important;
+  }
+
+  &-button-next, &-button-prev {
+    top: 160px;
+  }
+}

@@ -1,0 +1,43 @@
+@use "./variables.scss" as vars;
+
+.header {
+  background-color: vars.$mainColor;
+
+  &__container {
+    justify-content: space-between;
+    align-items: center;
+    padding: 25px 50px;
+  }
+
+  &__auth-block {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__login-link, &__logout-link {
+    font-size: 20px;
+  }
+
+  &__role {
+    font-size: 20px;
+  }
+}
+
+.nav {
+  
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    margin-right: 50px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    font-size: 20px;
+  }
+}
