@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <script src="/scripts/script.js" defer></script>
+  <title>Добавление зала</title>
+</head>
+<body>
+  <%- include("header.ejs", {user, needNav: false}) %>
+
+  <main class="main">
+    <section class="section edit">
+      <div class="container section__container edit__container">
+        <h2 class="section__title edit__title">
+          Добавление зала
+        </h2>
+
+        <form class="creation-form">
+          <div class="creation-form__block">
+            <h4 class="creation-form__field-title">Название</h4>
+            <input class="creation-form__text-input text-input" type="text" name="name" required>
+          </div>
+
+          <div class="creation-form__block">
+            <h4 class="creation-form__field-title">Описание</h4>
+            <textarea class="creation-form__text-input text-input creation-form__textarea" name="description"></textarea>
+          </div>
+
+          <div class="creation-form__block">
+            <% const weekdays = [
+              ["ПН", "mo"],
+              ["ВТ", "tu"],
+              ["СР", "we"],
+              ["ЧТ", "th"],
+              ["ПТ", "fr"],
+              ["СБ", "sa"],
+              ["ВС", "su"]
+            ]; %>
+
+            <h4 class="creation-form__field-title">Расписание</h4>
+            <% for(const weekday of weekdays) { %>
+              <div class="creation-form__weekday-schedule weekday-schedule" data-weekday="<%= weekday[1] %>">
+                <span class="creation-form__weekday"><%= weekday[0] %>:</span>
+                <input class="creation-form__time-input time-input" type="time" name="<%= weekday[1] %>-from">
+                <pre> &mdash; </pre>
+                <input class="creation-form__time-input time-input" type="time" name="<%= weekday[1] %>-to">
+              </div>
+            <% } %>
+          </div>
+
+          <div class="creation-form__block">
+            <h4 class="creation-form__field-title">Фото</h4>
+            <label class="creation-form__img-preview img-preview">
+              <input class="creation-form__img-input img-input" type="file" accept=".jpg" name="image">
+              <svg class="creation-form__add-icon" width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="200" height="200" fill="#8E8E8E"/>
+                <path d="M50 100H150M100 50V150" stroke="white" stroke-width="17.3913"/>
+              </svg>
+            </label>
+          </div>
+
+          <button class="btn creation-form__submit-btn" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="/styles/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  <script src="/scripts/script.js" defer></script>
+  <title>Главная страница</title>
+</head>
+<body>
+  <%- include("./header.ejs", {user, needNav: true}) %>
+
+  <main class="main">
+    <section class="section hero">
+      <div class="container section__container hero__container">
+        <% if (info) { %>
+          <h1 class="hero__title"><%= info.name %></h1>
+          <p class="hero__description">
+            <%= info.description %>
+          </p>
+          <%- include("schedule.ejs", { schedule: info.schedule }) %>
+          <div class="hero__address address">
+            <h4 class="address__title">
+              АДРЕС
+            </h4>
+            <address class="address__info">
+              <%= info.address %> 
+            </address>
+          </div>
+        <% } %>
+        <% if (user && user.roleId === 1) { %>
+          <a class="edit-link hero__edit-link" href="/fitness-centers/<%= info.id %>/edit">
+            Редактировать
+          </a>
+        <% } %>
+      </div>
+    </section>
+
+    <section class="section sport-halls">
+      <div class="container section__container sport-halls__container">
+        <% if (user && user.roleId === 1) { %>
+          <a class="add-link sport-halls__add-link" href="/sport-halls/create">
+            Добавить новый зал
+          </a>
+        <% } %>
+        <h2 class="section__title sport-halls__title">
+          Залы
+        </h2>
+        <%- include("swiper.ejs", {swiperClass: "sport-halls-swiper", objectList: sportHallList, cardView: "sportHallCard.ejs"}) %>
+      </div>
+    </section>
+
+    <section class="section trainers">
+      <div class="container section__container trainers__container">
+        <% if (user && user.roleId === 1) { %>
+          <a class="add-link trainers__add-link" href="/trainers/create">
+            Добавить нового тренера
+          </a>
+        <% } %>
+        <h2 class="section__title trainers__title">
+          Тренеры
+        </h2>
+        <%- include("swiper.ejs", {
+          swiperClass: "trainers-swiper",
+          objectList: trainerList,
+          cardView: "trainerCard.ejs",
+          user
+        }) %>
+      </div>
+    </section>
+
+    <section class="section programs">
+      <div class="container section__container programs__container">
+        <% if (user && user.roleId === 1) { %>
+          <a class="add-link programs__add-link" href="/programs/create">
+            Добавить новую программу
+          </a>
+        <% } %>
+        <h2 class="section__title programs__title">
+          Программы
+        </h2>
+        <%- include("swiper.ejs", {
+          swiperClass: "programs-swiper",
+          objectList: programList,
+          cardView: "programCard.ejs",
+          user
+        }) %>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+
+  </footer>
+</body>
+</html>

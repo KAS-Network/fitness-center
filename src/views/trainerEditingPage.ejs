@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <script src="/scripts/script.js" defer></script>
+  <title>Редактирование тренера</title>
+</head>
+<body>
+  <%- include("header.ejs", {user, needNav: false}) %>
+
+  <main class="main">
+    <section class="section edit">
+      <div class="container section__container edit__container">
+        <h2 class="section__title edit__title">
+          Редактирование тренера
+        </h2>
+
+        <form class="editing-form">
+          <div class="editing-form__block">
+            <h4 class="editing-form__field-title">Фамилия</h4>
+            <input class="editing-form__text-input text-input" type="text" name="lastName" required value="<%= trainer.lastName %>">
+          </div>
+
+          <div class="editing-form__block">
+            <h4 class="editing-form__field-title">Имя</h4>
+            <input class="editing-form__text-input text-input" type="text" name="firstName" required value="<%= trainer.firstName %>">
+          </div>
+
+          <div class="editing-form__block">
+            <h4 class="editing-form__field-title">Отчество</h4>
+            <input class="editing-form__text-input text-input" type="text" name="patronymic" value="<%= trainer.patronymic %>">
+          </div>
+
+          <div class="editing-form__block">
+            <h4 class="editing-form__field-title">Дата рождения</h4>
+            <input class="editing-form__date-input date-input" type="date" name="birthdate" required value="<%= trainer.birthdate.getFullYear() %>-<%= `${trainer.birthdate.getMonth() + 1}`.padStart(2, "0") %>-<%= `${trainer.birthdate.getDate()}`.padStart(2, "0") %>">
+          </div>
+
+          <div class="editing-form__block">
+            <h4 class="editing-form__field-title">Пол</h4>
+            <label class="editing-form__radio-label">
+              <span class="editing-form__radio-value">
+                Мужской
+              </span>
+              <input class="editing-form__radio-input radio-input" type="radio" name="gender" value="Мужской" required <% if (trainer.gender === "Мужской") { %> checked <% } %>>
+            </label>
+            <label class="editing-form__radio-label">
+              <span class="editing-form__radio-value">
+                Женский
+              </span>
+              <input class="editing-form__radio-input radio-input" type="radio" name="gender" value="Женский" required <% if (trainer.gender === "Женский") { %> checked <% } %>>
+            </label>
+          </div>
+
+          <div class="editing-form__block">
+            <h4 class="editing-form__field-title">Описание</h4>
+            <textarea class="editing-form__text-input text-input editing-form__textarea" name="description"><%= trainer.description %></textarea>
+          </div>
+
+          <div class="editing-form__block">
+            <% const weekdays = [
+              ["ПН", "mo"],
+              ["ВТ", "tu"],
+              ["СР", "we"],
+              ["ЧТ", "th"],
+              ["ПТ", "fr"],
+              ["СБ", "sa"],
+              ["ВС", "su"]
+            ]; %>
+
+            <h4 class="editing-form__field-title">Расписание</h4>
+            <% for(const weekday of weekdays) { %>
+              <div class="editing-form__weekday-schedule weekday-schedule" data-weekday="<%= weekday[1] %>">
+                <span class="editing-form__weekday"><%= weekday[0] %>:</span>
+                <input class="editing-form__time-input time-input" type="time" name="<%= weekday[1] %>-from" value="<%= trainer.schedule ? trainer.schedule[weekday[1]][0] : "" %>">
+                <pre> &mdash; </pre>
+                <input class="editing-form__time-input time-input" type="time" name="<%= weekday[1] %>-to" value="<%= trainer.schedule ? trainer.schedule[weekday[1]][1] : "" %>">
+              </div>
+            <% } %>
+          </div>
+
+          <div class="editing-form__block">
+            <h4 class="editing-form__field-title">Фото</h4>
+            <label class="editing-form__img-preview img-preview">
+              <input class="editing-form__img-input img-input" type="file" accept=".jpg" name="image">
+              <svg class="editing-form__add-icon" width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="200" height="200" fill="#8E8E8E"/>
+                <path d="M50 100H150M100 50V150" stroke="white" stroke-width="17.3913"/>
+              </svg>
+            </label>
+          </div>
+
+          <button class="btn editing-form__submit-btn" type="submit">Сохранить</button>
+        </form>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

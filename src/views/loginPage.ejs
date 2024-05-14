@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <link rel="stylesheet" href="styles/styles.css"> -->
+  <link rel="stylesheet" href="/styles/styles.css">
+  <title>Авторизация</title>
+</head>
+<body class="auth">
+  <div class="auth__container">
+    <h1 class="auth__title">Авторизация</h1>
+    <form class="auth__form auth-form" action="/login" method="post" enctype="application/x-www-form-urlencoded">
+      <lable class="auth-form__label">
+        <h3 class="auth-form__field-title">Логин</h3>
+        <input class="auth-form__input" type="text" name="login" required>
+      </lable>
+      <lable class="auth-form__label">
+        <h3 class="auth-form__field-title">Пароль</h3>
+        <input class="auth-form__input" type="password" name="password" required>
+      </lable>
+      <button class="btn auth-form__btn" type="submit">Войти</button>
+    </form>
+  </div>
+</body>
+</html>

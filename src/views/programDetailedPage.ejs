@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/styles/styles.css">
+  <script src="/scripts/script.js" defer></script>
+  <title><%= program.name %></title>
+</head>
+<body>
+  <%- include("header.ejs", {user, needNav: false}) %>
+  <main class="main">
+    <section class="section general">
+      <div class="container general__container">
+        <div class="general__text-info">
+          <h2 class="section__title general__title">
+            <%= program.name %>
+          </h2>
+          <p class="general__description">
+            <%= program.description %>
+          </p>
+          <%- include("schedule.ejs", { schedule: program.schedule }) %>
+        </div>
+        <img class="general__img" src="<%= program.imgURL %>" alt="Фото программы">
+      </div>
+    </section>
+
+    <section class="section trainer-and-sport-hall">
+      <div class="container trainer-and-sport-hall__container">
+        <div class="trainer-and-sport-hall__trainer-info">
+          <h2 class="section__title">Тренер</h2>
+          <%- include("trainerCard.ejs", {obj: trainer, swiperClass: null}) %>
+        </div>
+        <div class="trainer-and-sport-hall__sport-hall-info">
+          <h2 class="section__title">Зал</h2>
+          <%- include("sportHallCard.ejs", {obj: sportHall, swiperClass: null}) %>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

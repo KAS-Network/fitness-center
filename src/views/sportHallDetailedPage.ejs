@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <link rel="stylesheet" href="/styles/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+  <script src="/scripts/script.js" defer></script>
+  <title><%= sportHall.name %></title>
+</head>
+<body>
+  <%- include("header.ejs", {user, needNav: false}) %>
+  <main class="main">
+    <section class="section general">
+      <div class="container general__container">
+        <div class="general__text-info">
+          <h2 class="section__title general__title">
+            <%= sportHall.name %>
+          </h2>
+          <p class="general__description">
+            <%= sportHall.description %>
+          </p>
+          <%- include("schedule.ejs", { schedule: sportHall.schedule }) %>
+        </div>
+        <img class="general__img" src="<%= sportHall.imgURL %>" alt="Фото зала">
+      </div>
+    </section>
+
+    <% if (trainerList.length > 0) { %>
+      <section class="section trainers">
+        <div class="container section__container trainers__container">
+          <h2 class="section__title trainers__title">
+            Тренеры
+          </h2>
+          <%- include("swiper.ejs", {
+            swiperClass: "trainers-swiper",
+            objectList: trainerList,
+            cardView: "trainerCard.ejs"
+          }) %>
+        </div>
+      </section>
+    <% } %>
+
+    <% if (programList.length > 0) { %>
+      <section class="section programs">
+        <div class="container section__container programs__container">
+          <h2 class="section__title programs__title">
+            Программы
+          </h2>
+          <%- include("swiper.ejs", {
+            swiperClass: "programs-swiper",
+            objectList: programList,
+            cardView: "programCard.ejs"
+          }) %>
+        </div>
+      </section>
+    <% } %>
+  </main>
+</body>
+</html>

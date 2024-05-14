@@ -1,0 +1,17 @@
+<div class="swiper <%= swiperClass || "" %>">
+  <div class="swiper-wrapper <%= swiperClass ? `${swiperClass}__swiper-wrapper` : "" %>">
+    <% if (objectList) { %>
+      <% for(const obj of objectList) { %>
+        <div class="swiper-slide <%= swiperClass ? `${swiperClass}__swiper-slide` : "" %>">
+          <%- include(cardView, {obj, swiperClass}) %>
+        </div>
+      <% } %>
+    <% } %>
+  </div>
+  <!-- If we need pagination -->
+  <div class="swiper-pagination <%= swiperClass ? `${swiperClass}__swiper-pagination` : "" %>"></div>
+
+  <!-- If we need navigation buttons -->
+  <div class="swiper-button-prev <%= swiperClass ? `${swiperClass}__swiper-button-prev` : "" %>"></div>
+  <div class="swiper-button-next <%= swiperClass ? `${swiperClass}__swiper-button-next` : "" %>"></div>
+</div>

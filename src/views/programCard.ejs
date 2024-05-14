@@ -1,0 +1,20 @@
+<div class="swiper-card program-card <%= swiperClass ? `${swiperClass}__program-card` : "" %>">
+  <a class="swiper-card__link program-card__link" href="/programs/<%= obj.id %>">
+    <h4 class="swiper-card__name program-card__name">
+      <%= obj.name %>
+    </h4>
+    <img class="swiper-card__img program-card__img" src="<%= obj.imgURL %>" alt="sport hall image">
+    <% if (user && user.roleId === 1) { %>
+      <a class="swiper-card__edit-link program-card__edit-link" href="/programs/<%= obj.id %>/edit">
+        <svg class="swiper-card__edit-icon program-card__edit-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6.414 15.89L16.556 5.74798L15.142 4.33398L5 14.476V15.89H6.414ZM7.243 17.89H3V13.647L14.435 2.21198C14.6225 2.0245 14.8768 1.91919 15.142 1.91919C15.4072 1.91919 15.6615 2.0245 15.849 2.21198L18.678 5.04098C18.8655 5.2285 18.9708 5.48281 18.9708 5.74798C18.9708 6.01314 18.8655 6.26745 18.678 6.45498L7.243 17.89ZM3 19.89H21V21.89H3V19.89Z" fill="white"/>
+        </svg>      
+      </a>
+      <button class="swiper-card__delete-btn program-card__delete-btn delete-btn" data-url="/programs/<%= obj.id %>">
+        <svg class="swiper-card__delete-icon program-card__delete-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M7 21C6.45 21 5.97933 20.8043 5.588 20.413C5.19667 20.0217 5.00067 19.5507 5 19V6H4V4H9V3H15V4H20V6H19V19C19 19.55 18.8043 20.021 18.413 20.413C18.0217 20.805 17.5507 21.0007 17 21H7ZM17 6H7V19H17V6ZM9 17H11V8H9V17ZM13 17H15V8H13V17Z" fill="white"/>
+        </svg>      
+      </button>
+    <% } %>
+  </a>
+</div>

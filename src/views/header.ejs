@@ -1,0 +1,32 @@
+<header class="header">
+  <div class="container header__container">
+    <a class="header__link-logo" href="/">
+      <img class="header__logo" src="/images/logo.svg" alt="Логотип">
+    </a>
+    <% if (needNav) { %>
+      <nav class="nav header__nav">
+        <ul class="nav__list">
+          <li class="nav__item">
+            <a class="nav__link" href="#">Залы</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#">Тренеры</a>
+          </li>
+          <li class="nav__item">
+            <a class="nav__link" href="#">Программы</a>
+          </li>
+        </ul>
+      </nav>
+    <% } %>
+    <div class="header__auth-block">
+      <% if (!user) { %>
+        <a class="header__login-link" href="/login">Войти</a>
+      <% } else { %>
+        <span class="header__role">
+          <%= user.role %>
+        </span>
+        <a class="header__logout-link" href="/logout">Выйти</a>
+      <% } %>
+    </div>
+  </div>
+</header>

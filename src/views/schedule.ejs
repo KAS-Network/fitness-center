@@ -1,0 +1,36 @@
+<div class="hero__schedule schedule">
+
+  <% const weekdays = [
+                ["ПН", "mo"],
+                ["ВТ", "tu"],
+                ["СР", "we"],
+                ["ЧТ", "th"],
+                ["ПТ", "fr"],
+                ["СБ", "sa"],
+                ["ВС", "su"]
+              ]; %>
+
+  <h4 class="schedule__title">
+    ВРЕМЯ РАБОТЫ
+  </h4>
+  <ul class="schedule__list">
+    <% if (schedule) { %>
+      <% for(const weekday of weekdays) { %>
+        <li class="schedule__item">
+          <span class="schedule__weekday"><%= weekday[0] %>:</span>
+          <span class="schedule__timerange">
+            <% if (!schedule[weekday[1]]) { %>
+              Неизвестно
+            <% } else if (!schedule[weekday[1]][0] || !schedule[weekday[1]][1]) { %>
+              Выходной
+            <% } else { %>
+              <%= schedule[weekday[1]][0] %> &mdash; <%= schedule[weekday[1]][1] %>
+            <% } %>
+          </span>
+        </li>
+      <% } %>
+    <% } else { %>
+      Отсутствует
+    <% } %>
+  </ul>
+</div>
